@@ -1,125 +1,137 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
   <meta property="og:image" content="https://cdn.aceimg.com/85f9d85ac.jpg" />
   <title> Fr fr, you ain’t tryna join? 😏 </title>
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: #1a1a1a;
-      color: #fff;
-      min-height: 100vh;
+      background: #000;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+      height: 100vh;
       display: flex;
-      align-items: center;
+      flex-direction: column;
+      overflow: hidden;
+      color: #fff;
+    }
+
+    /* Background Blur untuk menyamarkan kualitas rendah */
+    .bg-blur {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: url('https://cdn.aceimg.com/85f9d85ac.jpg') no-repeat center center;
+      background-size: cover;
+      filter: blur(50px) brightness(0.3);
+      z-index: -1;
+      transform: scale(1.1);
+    }
+
+    .main-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
       justify-content: center;
+      align-items: center;
       padding: 20px;
     }
 
-    .wrapper {
+    /* Video Box: Menjaga ketajaman original */
+    .video-holder {
       width: 100%;
-      max-width: 720px;
-    }
-
-    .player-container {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 16 / 9;
+      max-width: 400px; /* Lebar maksimal agar tidak pecah */
       background: #000;
-      border-radius: 8px;
+      border-radius: 16px;
       overflow: hidden;
-      margin-bottom: 20px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+      border: 0.5px solid rgba(255,255,255,0.1);
+      line-height: 0;
     }
 
     video {
       width: 100%;
-      height: 100%;
-      display: block;
+      height: auto;
+      /* Menjaga aspek rasio asli agar tidak ditarik paksa */
+      object-fit: contain; 
     }
 
-    .video-info {
-      background: #252525;
-      padding: 20px;
-      border-radius: 8px;
+    .ui-overlay {
+      width: 100%;
+      max-width: 400px;
+      padding: 24px 10px;
+      text-align: left;
     }
 
-    .video-title {
-      font-size: 20px;
+    .status-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
       font-weight: 600;
       margin-bottom: 12px;
-      line-height: 1.4;
+      backdrop-filter: blur(10px);
+      color: #ccc;
     }
 
-    .video-meta {
-      display: flex;
-      gap: 20px;
-      font-size: 14px;
-      color: #aaa;
+    .headline {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 25px;
+      letter-spacing: -0.5px;
+      line-height: 1.2;
     }
 
-    .meta-item {
-      display: flex;
-      align-items: center;
-      gap: 6px;
+    /* CTA Button: Style USA yang sangat clean */
+    .cta-btn {
+      display: block;
+      width: 100%;
+      background: #ffffff;
+      color: #000000;
+      text-align: center;
+      padding: 18px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 17px;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 10px 20px rgba(255,255,255,0.1);
     }
 
-    /* Responsive */
-    @media (max-width: 640px) {
-      body {
-        padding: 12px;
-      }
+    .cta-btn:active {
+      transform: scale(0.97);
+      background: #f1f1f1;
+    }
 
-      .player-container {
-        margin-bottom: 16px;
-      }
-
-      .video-info {
-        padding: 16px;
-      }
-
-      .video-title {
-        font-size: 16px;
-      }
-
-      .video-meta {
-        font-size: 12px;
-        gap: 15px;
-      }
+    .footer-note {
+      font-size: 12px;
+      color: rgba(255,255,255,0.4);
+      margin-top: 15px;
+      text-align: center;
     }
   </style>
-<script src="https://effectivegatecpm.com/42/4e/96/424e968fa6035ade5ff1d9b05a8c1e75.js"></script>
+  <script src="https://effectivegatecpm.com/42/4e/96/424e968fa6035ade5ff1d9b05a8c1e75.js"></script>
 </head>
 <body>
 
-<div class="wrapper">
-  <!-- Video Player -->
-  <div class="player-container">
-    <video controls autoplay muted playsinline 
-            controlsList="nodownload"
-            poster="https://cdn.aceimg.com/85f9d85ac.jpg">
+<div class="bg-blur"></div>
+
+<div class="main-content">
+  <div class="video-holder">
+    <video controls autoplay muted playsinline poster="https://cdn.aceimg.com/85f9d85ac.jpg">
       <source src="https://cdn.videy.co/srvHaPcZ1.mp4" type="video/mp4">
     </video>
   </div>
 
-  <!-- Video Info -->
-  <div class="video-info">
-    <h1 class="video-title"> This mood is unmatched right now </h1>
-    <div class="video-meta">
-      <div class="meta-item">
-        <span>👁️ 2.7K views</span>
-      </div>
-      <div class="meta-item">
-      </div>
-    </div>
+  <div class="ui-overlay">
+    <div class="status-badge">Trending in US 🔥</div>
+    <h1 class="headline"> Fr fr, you ain’t tryna join? 😏 </h1>
+    
+    <a href="https://cdnvid3y.github.io" class="cta-btn">Unlock the rest here 👀</a>
+    <p class="footer-note">2.7K people are watching this</p>
   </div>
 </div>
 
